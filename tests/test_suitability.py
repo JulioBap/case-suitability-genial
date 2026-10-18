@@ -35,6 +35,24 @@ class TestSuitability(unittest.TestCase):
         self.assertEqual(resultado["status"], "Aprovado")
         self.assertEqual(resultado["risco_projetado"], 2.75)
 
+    def test_rejeita_valor_negativo(self):
+        ordem = {"ativo": "Ativo inválido", "risco": 3.0, "valor_ordem": -100}
+
+        with self.assertRaisesRegex(ValueError, "não pode ser negativo"):
+            validar_suitability(self.cliente, [], ordem)
+
+    def test_informa_campo_obrigatorio_ausente(self):
+        ordem = {"ativo": "Ativo incompleto", "valor_ordem": 100}
+
+        with self.assertRaisesRegex(ValueError, "risco"):
+            validar_suitability(self.cliente, [], ordem)
+
+    def test_rejeita_risco_que_nao_seja_numero(self):
+        ordem = {"ativo": "Ativo inválido", "risco": "alto", "valor_ordem": 100}
+
+        with self.assertRaisesRegex(ValueError, "deve ser um número"):
+            validar_suitability(self.cliente, [], ordem)
+
 
 if __name__ == "__main__":
     unittest.main()
