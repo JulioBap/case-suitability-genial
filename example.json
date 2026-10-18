@@ -1,0 +1,23 @@
+{
+  "cliente": {
+    "perfil": "Moderado",
+    "score_max_risco": 2.5
+  },
+  "carteira_atual": [
+    {
+      "ativo": "CDB XPTO",
+      "risco": 1.2,
+      "valor_investido": 50000
+    },
+    {
+      "ativo": "Ação ABC",
+      "risco": 4.0,
+      "valor_investido": 10000
+    }
+  ],
+  "nova_ordem": {
+    "ativo": "FII YYY",
+    "risco": 3.5,
+    "valor_ordem": 5000
+  }
+}
