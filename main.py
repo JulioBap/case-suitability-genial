@@ -1,9 +1,12 @@
+import sys
 import json
 
 from suitability import validar_suitability
 
 
-with open("example.json", encoding="utf-8") as arquivo:
+arquivo_entrada = sys.argv[1] if len(sys.argv) > 1 else "example.json"
+
+with open(arquivo_entrada, encoding="utf-8") as arquivo:
     entrada = json.load(arquivo)
 
 resultado = validar_suitability(

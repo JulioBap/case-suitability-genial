@@ -10,7 +10,13 @@ Projeto em Python que calcula o risco ponderado de uma carteira após uma nova c
 python main.py
 ```
 
-O programa lê as informações de `example.json` e imprime a decisão em formato JSON. Para simular outra carteira ou ordem, edite esse arquivo mantendo a mesma estrutura:
+O programa lê as informações de `example.json` e imprime a decisão em formato JSON. Para avaliar um arquivo diferente, informe seu nome no comando:
+
+```powershell
+python main.py outro_cenario.json
+```
+
+Os arquivos JSON devem manter a mesma estrutura:
 
 - `cliente`: perfil e `score_max_risco`;
 - `carteira_atual`: ativos com `risco` e `valor_investido`;
