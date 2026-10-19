@@ -88,13 +88,16 @@ def validar_suitability(cliente, carteira, nova_ordem):
         cliente["score_max_risco"], "cliente.score_max_risco"
     )
 
+    risco_atual = calcular_risco_atual(carteira)
     risco_projetado = calcular_risco_projetado(carteira, nova_ordem)
     limite_alerta = score_maximo * 1.10
 
     if risco_projetado > limite_alerta:
         return {
             "status": "Alerta",
+            "risco_atual": risco_atual,
             "risco_projetado": risco_projetado,
+            "limite_alerta": limite_alerta,
             "mensagem": (
                 f"Atenção: o risco projetado ultrapassa o limite "
                 f"de {limite_alerta:.2f}."
@@ -103,6 +106,8 @@ def validar_suitability(cliente, carteira, nova_ordem):
 
     return {
         "status": "Aprovado",
+        "risco_atual": risco_atual,
         "risco_projetado": risco_projetado,
+        "limite_alerta": limite_alerta,
         "mensagem": "Ordem aprovada. Carteira dentro do limite de alerta.",
     }
